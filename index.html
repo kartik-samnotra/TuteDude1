@@ -1,226 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laundry Services Web App</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laundry Services Web App</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
 </head>
+
 <body>
 
-    <nav>
-        <div class="container nav-container">
-            <a href="#" class="logo">Logo</a>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#booking">Services</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-            <a href="#" class="username-btn">Username</a>
+
+<nav class="nav-wrap">
+  <div class="wrap-inner main-wrapper">
+    <a class="brand site-logo" href="#">Logo</a>
+
+    <div class="links-block">
+      <a class="navlink" href="#home">Home</a>
+      <a class="navlink" href="#booking">Services</a>
+      <a class="navlink" href="#about">About Us</a>
+      <a class="navlink" href="#contact">Contact Us</a>
+    </div>
+
+    <a class="user-action" href="#">Username</a>
+  </div>
+</nav>
+
+
+<header id="home" class="hero-wrap">
+  <div class="wrap-inner hero-inner">
+    <div class="left-col">
+      <h1>Revitalize Your Clothes with Expert <br><span>Laundry Services!</span></h1>
+      <p>From premium dry cleaning to swift wash and fold, we deliver care and convenience. Schedule a pickup and rediscover the freshness of your clothes today!</p>
+      <a href="#booking" class="btn primary-btn scroll-to-booking">Book a service today!</a>
+    </div>
+
+    <div class="right-col">
+      <img src="https://cdn3d.iconscout.com/3d/premium/thumb/laundry-10514405-8530782.png" alt="Laundry Service">
+    </div>
+  </div>
+</header>
+
+<section class="achievements-block">
+  <div class="wrap-inner">
+    <h2>Our Achievements</h2>
+    <div class="cards-row">
+      <div class="card ach-card">
+        <h3>15+</h3>
+        <p>Laundry Services</p>
+      </div>
+
+      <div class="card ach-card">
+        <h3>240+</h3>
+        <p>Happy Customers</p>
+      </div>
+
+      <div class="card ach-card">
+        <h3>2+ Yrs</h3>
+        <p>Experience</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="booking" class="booking-block">
+  <div class="wrap-inner booking-inner">
+
+    <div class="services-col">
+      <h2>Our Services</h2>
+      <p class="small-note">Click On The Add To Cart Button To Add The Services To Your Cart</p>
+
+      <div class="service-row" data-name="Dry Cleaning" data-price="200.00">
+        <div class="service-meta">
+          <span class="icon">👚</span>
+          <span class="s-title">Dry Cleaning</span>
+          <span class="s-price">₹200.00</span>
         </div>
-    </nav>
+        <button class="service-btn add-action">Add Item</button>
+      </div>
 
-    <header class="hero" id="home">
-        <div class="container hero-container">
-            <div class="hero-left">
-                <h1>Revitalize Your Clothes with Expert <br><span>Laundry Services!</span></h1>
-                <p>From premium dry cleaning to swift wash and fold, we deliver care and convenience. Schedule a pickup and rediscover the freshness of your clothes today!</p>
-                <a href="#booking" class="btn btn-primary scroll-to-booking">Book a service today!</a>
-            </div>
-            <div class="hero-right">
-                <img src="https://cdn3d.iconscout.com/3d/premium/thumb/laundry-10514405-8530782.png" alt="Laundry Service">
-            </div>
+      <div class="service-row" data-name="Wash & Fold" data-price="100.00">
+        <div class="service-meta">
+          <span class="icon">💨</span>
+          <span class="s-title">Wash & Fold</span>
+          <span class="s-price">₹100.00</span>
         </div>
-    </header>
+        <button class="service-btn add-action">Add Item</button>
+      </div>
 
-    <section class="achievements">
-        <div class="container achievements-container">
-            <h2>Our Achievements</h2>
-            <div class="achievements-cards">
-                <div class="achievement-card">
-                    <h3>15+</h3>
-                    <p>Laundry Services</p>
-                </div>
-                <div class="achievement-card">
-                    <h3>240+</h3>
-                    <p>Happy Customers</p>
-                </div>
-                <div class="achievement-card">
-                    <h3>2+ Yrs</h3>
-                    <p>Experience</p>
-                </div>
-            </div>
+      <div class="service-row" data-name="Ironing" data-price="30.00">
+        <div class="service-meta">
+          <span class="icon">👔</span>
+          <span class="s-title">Ironing</span>
+          <span class="s-price">₹30.00</span>
         </div>
-    </section>
+        <button class="service-btn add-action">Add Item</button>
+      </div>
 
-    <section class="booking" id="booking">
-        <div class="container booking-container">
-            <div class="services-list">
-                <h2>Our Services</h2>
-                <p class="services-intro">Click On The Add To Cart Button To Add The Services To Your Cart</p>
-
-                <div class="service-item" data-name="Dry Cleaning" data-price="200.00">
-                    <div class="service-details">
-                        <span class="service-icon">👚</span>
-                        <span class="service-name">Dry Cleaning</span>
-                        <span class="service-price">₹200.00</span>
-                    </div>
-                    <button class="btn add-btn">Add Item</button>
-                </div>
-
-                <div class="service-item" data-name="Wash & Fold" data-price="100.00">
-                    <div class="service-details">
-                        <span class="service-icon">💨</span>
-                        <span class="service-name">Wash & Fold</span>
-                        <span class="service-price">₹100.00</span>
-                    </div>
-                    <button class="btn add-btn">Add Item</button>
-                </div>
-
-                <div class="service-item" data-name="Ironing" data-price="30.00">
-                    <div class="service-details">
-                        <span class="service-icon">👔</span>
-                        <span class="service-name">Ironing</span>
-                        <span class="service-price">₹30.00</span>
-                    </div>
-                    <button class="btn add-btn">Add Item</button>
-                </div>
-
-                <div class="service-item" data-name="Stain Removal" data-price="500.00">
-                    <div class="service-details">
-                        <span class="service-icon">✨</span>
-                        <span class="service-name">Stain Removal</span>
-                        <span class="service-price">₹500.00</span>
-                    </div>
-                    <button class="btn add-btn">Add Item</button>
-                </div>
-
-                <div class="service-item" data-name="Leather & Suede Cleaning" data-price="999.00">
-                    <div class="service-details">
-                        <span class="service-icon">👜</span>
-                        <span class="service-name">Leather & Suede Cleaning</span>
-                        <span class="service-price">₹999.00</span>
-                    </div>
-                    <button class="btn add-btn">Add Item</button>
-                </div>
-
-                <div class="service-item" data-name="Wedding Dress Cleaning" data-price="2800.00">
-                    <div class="service-details">
-                        <span class="service-icon">👰</span>
-                        <span class="service-name">Wedding Dress Cleaning</span>
-                        <span class="service-price">₹2800.00</span>
-                    </div>
-                    <button class="btn add-btn">Add Item</button>
-                </div>
-                
-                <p class="services-info">Add the items to the cart and book now</p>
-            </div>
-
-            <div class="cart-section">
-                <div class="cart-card">
-                    <h3>Added Items</h3>
-                    <table class="cart-table">
-                        <thead>
-                            <tr>
-                                <th>S.No</th>
-                                <th>Service Name</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody id="cart-items">
-                            </tbody>
-                    </table>
-                    <div class="total-amount">
-                        <span>Total Amount</span>
-                        <span id="total-amount">₹0.00</span>
-                    </div>
-
-                    <h3 class="book-now-heading">Book Now</h3>
-                    <form id="booking-form">
-                        <input type="text" id="full-name" placeholder="Full Name" required>
-                        <input type="email" id="email" placeholder="Email ID" required>
-                        <input type="tel" id="phone" placeholder="Phone Number" required>
-                        <button type="submit" class="btn btn-primary btn-book-now">Book now</button>
-                    </form>
-                    <p id="success-msg">Thank you For Booking the Service We will get back to you soon!</p>
-                </div>
-            </div>
+      <div class="service-row" data-name="Stain Removal" data-price="500.00">
+        <div class="service-meta">
+          <span class="icon">✨</span>
+          <span class="s-title">Stain Removal</span>
+          <span class="s-price">₹500.00</span>
         </div>
-    </section>
+        <button class="service-btn add-action">Add Item</button>
+      </div>
 
-    <section class="quality" id="about">
-        <div class="container quality-container">
-            <div class="quality-item">
-                <img src="https://i.pinimg.com/236x/23/59/3b/23593b56ec669228155076e9bf7fb699.jpg" alt="Premium Services" class="quality-icon">
-                <h3>Premium Services</h3>
-                <p>Elevate your wardrobe with our meticulous dry cleaning, ensuring garments look and feel as good as new.</p>
-            </div>
-            <div class="quality-item">
-                <img src="data:image/png;base64,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" alt="Quick Support" class="quality-icon">
-                <h3>Quick Support</h3>
-                <p>We're committed to providing prompt solutions to ensure your experience is smooth and worry-free.</p>
-            </div>
-            <div class="quality-item">
-                <img src="https://i.pinimg.com/236x/b2/03/da/b203da40155d4957d96eb06a1e95752e.jpg" alt="Hassle Free Delivery" class="quality-icon">
-                <h3>Hassle Free Delivery</h3>
-                <p>Enjoy seamless service with our convenient pickup and delivery options, tailored to your schedule.</p>
-            </div>
-            <div class="quality-item">
-                <img src="https://static.vecteezy.com/system/resources/previews/021/651/018/non_2x/acquisition-fee-icon-vector.jpg" alt="Affordable Prices" class="quality-icon">
-                <h3>Affordable Prices</h3>
-                <p>Experience exceptional care without breaking the bank – our affordable prices make laundry day stress-free.</p>
-            </div>
+      <div class="service-row" data-name="Leather & Suede Cleaning" data-price="999.00">
+        <div class="service-meta">
+          <span class="icon">👜</span>
+          <span class="s-title">Leather & Suede Cleaning</span>
+          <span class="s-price">₹999.00</span>
         </div>
-    </section>
+        <button class="service-btn add-action">Add Item</button>
+      </div>
 
-    <section class="newsletter">
-        <div class="container newsletter-container">
-            <h2>Subscribe to our newsletter.</h2>
-            <form class="newsletter-form">
-                <input type="text" placeholder="Full name">
-                <input type="email" placeholder="Email">
-                <button type="submit" class="btn btn-dark">Subscribe</button>
-            </form>
+      <div class="service-row" data-name="Wedding Dress Cleaning" data-price="2800.00">
+        <div class="service-meta">
+          <span class="icon">👰</span>
+          <span class="s-title">Wedding Dress Cleaning</span>
+          <span class="s-price">₹2800.00</span>
         </div>
-    </section>
+        <button class="service-btn add-action">Add Item</button>
+      </div>
 
-    <footer id="contact">
-        <div class="container footer-container">
-            <div class="footer-col" id="contact">
-                <a href="#" class="logo">Logo</a>
-                <p class="about-us-text">Lorem Ipsum Dolor Sit Amet Consectetur. Sed At Conque.</p>
-            </div>
-            <div class="footer-col">
-                <h3>Important Links</h3>
-                <ul>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of use</a></li>
-                    <li><a href="#">Refund Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Contact</h3>
-                <p>mail@site.com</p>
-                <p>+91 91234 56780</p>
-            </div>
-            <div class="footer-col">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
+      <p class="hint-line">Add the items to the cart and book now</p>
+    </div>
+
+    <aside class="cart-col">
+      <div class="cart-card">
+        <h3>Added Items</h3>
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Service Name</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody id="cart-body">
+
+          </tbody>
+        </table>
+
+        <div class="total-line">
+          <span>Total Amount</span>
+          <span id="total-amt">₹0.00</span>
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+        <h3 class="book-heading">Book Now</h3>
+
+        <form id="booking-form">
+          <input type="text" id="full-name" placeholder="Full Name" required>
+          <input type="email" id="email" placeholder="Email ID" required>
+          <input type="tel" id="phone" placeholder="Phone Number" required>
+          <button type="submit" class="btn primary-btn book-now">Book now</button>
+        </form>
+
+        <p id="success-note">Thank you For Booking the Service We will get back to you soon!</p>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+
+<section id="about" class="quality-block">
+  <div class="wrap-inner quality-inner">
+    <div class="qual-item">
+      <img class="qual-img" src="https://i.pinimg.com/236x/23/59/3b/23593b56ec669228155076e9bf7fb699.jpg" alt="Premium Services">
+      <h3>Premium Services</h3>
+      <p>Elevate your wardrobe with our meticulous dry cleaning, ensuring garments look and feel as good as new.</p>
+    </div>
+
+    <div class="qual-item">
+      <img class="qual-img" src="data:image/png;base64,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" alt="Quick Support">
+      <h3>Quick Support</h3>
+      <p>We're committed to providing prompt solutions to ensure your experience is smooth and worry-free.</p>
+    </div>
+
+    <div class="qual-item">
+      <img class="qual-img" src="https://i.pinimg.com/236x/b2/03/da/b203da40155d4957d96eb06a1e95752e.jpg" alt="Hassle Free Delivery">
+      <h3>Hassle Free Delivery</h3>
+      <p>Enjoy seamless service with our convenient pickup and delivery options, tailored to your schedule.</p>
+    </div>
+
+    <div class="qual-item">
+      <img class="qual-img" src="https://static.vecteezy.com/system/resources/previews/021/651/018/non_2x/acquisition-fee-icon-vector.jpg" alt="Affordable Prices">
+      <h3>Affordable Prices</h3>
+      <p>Experience exceptional care without breaking the bank – our affordable prices make laundry day stress-free.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="newsletter-block">
+  <div class="wrap-inner">
+    <h2>Subscribe to our newsletter.</h2>
+    <form class="newsletter-form">
+      <input type="text" placeholder="Full name">
+      <input type="email" placeholder="Email">
+      <button class="btn dark-btn" type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+
+<footer id="contact">
+  <div class="wrap-inner footer-inner">
+    <div class="footer-a">
+      <a href="#" class="brand">Logo</a>
+      <p class="muted">Lorem Ipsum Dolor Sit Amet Consectetur. Sed At Conque.</p>
+    </div>
+
+    <div class="footer-b">
+      <h3>Important Links</h3>
+      <ul>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of use</a></li>
+        <li><a href="#">Refund Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-c">
+      <h3>Contact</h3>
+      <p>mail@site.com</p>
+      <p>+91 91234 56780</p>
+    </div>
+
+    <div class="footer-d">
+      <h3>Follow Us</h3>
+      <div class="socials">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>
