@@ -1,182 +1,143 @@
-var EMAILJS_SERVICE = 'service_tcmn13p';
-var EMAILJS_TEMPLATE = 'template_i2j4h36';
-var EMAILJS_USER = 'S6jXezHzV9UpRSgiY';
+let addButtons = document.querySelectorAll(".add-to-cart-btn");
+let cartList = document.getElementById("cart-items-list");
+let totalAmount = document.getElementById("total-amount");
+let successMessage = document.getElementById("success-message");
+let bookingForm = document.getElementById("booking-form");
 
-document.addEventListener('DOMContentLoaded', function () {
+let currentTotal = 0;
 
-  (function initEmail() {
-    try {
-      emailjs.init(EMAILJS_USER);
-    } catch (err) {
-      console.warn('EmailJS init warn', err);
-    }
-  })();
+function showEmptyMessage() {
+    cartList.innerHTML = "";
+    let emptyRow = document.createElement("tr");
+    emptyRow.className = "empty-row";
+    emptyRow.innerHTML = `<td colspan="3" style="text-align:center; color:#888;">No items added</td>`;
+    cartList.appendChild(emptyRow);
+}
+
+function renumberRows() {
+    let rows = cartList.querySelectorAll("tr");
+    let count = 1;
+    rows.forEach(function (r) {
+        if (r.classList.contains("empty-row")) return;
+        let snCell = r.querySelector("td");
+        if (snCell) {
+            snCell.innerText = count;
+            count = count + 1;
+        }
+    });
+}
+
+function updateTotalDisplay() {
+    totalAmount.innerText = "₹" + currentTotal.toFixed(2);
+}
+
+showEmptyMessage();
+updateTotalDisplay();
+
+addButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        let parent = button.parentElement;
+        let name = parent.getAttribute("data-name");
+        let priceText = parent.getAttribute("data-price");
+        let price = Number(priceText);
+
+        let existingRow = cartList.querySelector(`tr[data-service="${name}"]`);
+
+        if (existingRow) {
+
+            existingRow.remove();
+            button.classList.remove("remove-btn-style");
+            button.classList.add("add-btn-style");
+            button.innerText = "Add Item ⊕";
+
+            currentTotal = currentTotal - price;
+            if (currentTotal < 0) currentTotal = 0;
+
+            if (cartList.querySelectorAll("tr").length === 0) {
+                showEmptyMessage();
+            }
+
+            renumberRows();
+            updateTotalDisplay();
+        } else {
+            let empty = cartList.querySelector(".empty-row");
+            if (empty) {
+                empty.remove();
+            }
+
+            let newRow = document.createElement("tr");
+            newRow.setAttribute("data-service", name);
+
+            newRow.innerHTML = `
+                <td></td>
+                <td>${name}</td>
+                <td>₹${price.toFixed(2)}</td>
+            `;
+
+            cartList.appendChild(newRow);
+            button.classList.remove("add-btn-style");
+            button.classList.add("remove-btn-style");
+            button.innerText = "Remove Item ⊖";
+
+            currentTotal = currentTotal + price;
+            updateTotalDisplay();
+
+            renumberRows();
+        }
+    });
+});
 
 
-  var servicesPanel = document.querySelector('.services-col') || document.querySelector('.services-side'); 
-  var cartBody = document.getElementById('cart-body');
-  var totalEl = document.getElementById('total-amt');
-  var bookingForm = document.getElementById('booking-form');
-  var successNote = document.getElementById('success-note');
-  var scrollBtn = document.querySelector('.scroll-to-booking');
-
-
-  var cart = []; 
-
-
-  function refreshCartView() {
-
-    if (!cartBody) { return; }
-    cartBody.innerHTML = '';
-
-    var total = 0;
-
-    if (cart.length === 0) {
-      cartBody.innerHTML = '<tr><td colspan="3" style="text-align:center;">No items added.</td></tr>';
-    } else {
-      for (var i = 0; i < cart.length; i++) {
-        total += cart[i].price;
-        var tr = document.createElement('tr');
-        tr.innerHTML = '<td>' + (i + 1) + '</td>' +
-                       '<td>' + cart[i].name + '</td>' +
-                       '<td>₹' + cart[i].price.toFixed(2) + '</td>';
-        cartBody.appendChild(tr);
-      }
-    }
-
-    totalEl.textContent = '₹' + total.toFixed(2);
-  }
-
-  function isItemInCart(name) {
-    for (var i = 0; i < cart.length; i++) {
-      if (cart[i].name === name) return true;
-    }
-    return false;
-  }
-
-
-  function addItemToCart(name, price, btn) {
-
-    cart.push({ name: name, price: price });
-
-    if (btn) {
-      btn.textContent = 'Remove Item';
-      btn.style.background = '#fee2e2';
-      btn.style.color = '#dc2626';
-    }
-    refreshCartView();
-  }
-
-
-  function removeItemFromCart(name, btn) {
-    var newCart = [];
-    for (var i = 0; i < cart.length; i++) {
-      if (cart[i].name !== name) {
-        newCart.push(cart[i]);
-      }
-    }
-    cart = newCart;
-    if (btn) {
-      btn.textContent = 'Add Item';
-      btn.style.background = '#e5e7eb';
-      btn.style.color = '#1f2937';
-    }
-    refreshCartView();
-  }
-
-  function resetAll() {
-    cart = [];
-    refreshCartView();
-
-    var btns = document.querySelectorAll('.service-btn');
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].textContent = 'Add Item';
-      btns[i].style.background = '#e5e7eb';
-      btns[i].style.color = '#1f2937';
-    }
-  }
-
-  function handleBookingSubmit(e) {
+bookingForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    var name = (document.getElementById('full-name') || {}).value || '';
-    var email = (document.getElementById('email') || {}).value || '';
-    var phone = (document.getElementById('phone') || {}).value || '';
+    let hasItems = cartList.querySelectorAll("tr").length > 0 && 
+                   !cartList.querySelector(".empty-row");
 
-    if (cart.length === 0) {
-      alert('Please add at least one service to your cart before booking.');
-      return;
+    if (!hasItems) {
+        alert("Please add at least one service before booking.");
+        return;
     }
 
-    var servicesText = cart.map(function(it){ return it.name + ' (₹' + it.price.toFixed(2) + ')'; }).join('\n');
+    let fullName = document.getElementById("full-name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone-number").value;
 
-    var templateParams = {
-      from_name: name,
-      from_email: email,
-      phone_number: phone,
-      services_booked: servicesText,
-      total_amount: totalEl.textContent,
-      email: email
+    let services = [];
+    let rows = cartList.querySelectorAll("tr");
+
+    rows.forEach(function (row) {
+        if (!row.classList.contains("empty-row")) {
+            let serviceName = row.children[1].innerText;
+            let price = row.children[2].innerText;
+            services.push(serviceName + " - " + price);
+        }
+    });
+
+    let serviceListText = services.join("\n");
+
+    let emailParams = {
+        from_name: fullName,
+        from_email: email,
+        phone_number: phone,
+        services_booked: serviceListText,
+        total_amount: "₹" + currentTotal.toFixed(2)
     };
 
-    emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, templateParams)
-      .then(function (resp) {
-        console.log('Email send ok', resp.status, resp.text);
-        if (successNote) successNote.style.display = 'block';
-        try { bookingForm.reset(); } catch (err) {}
-        resetAll();
-      })
-      .catch(function (err) {
-        console.error('Email failed', err);
-        alert('Failed to send booking. Please try again.');
-      });
-  }
+    // EmailJS credentials
+    const EMAIL_SERVICE_ID = "service_tcmn13p";
+    const EMAIL_TEMPLATE_ID = "template_i2j4h36";
 
-  if (scrollBtn) {
-    scrollBtn.addEventListener('click', function (ev) {
-      ev.preventDefault();
-      var target = document.getElementById('booking');
-      if (target) {
-        window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-      }
+    emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, emailParams)
+    .then(function () {
+
+        successMessage.style.display = "block";
+
+        bookingForm.reset();
+    })
+    .catch(function (error) {
+        console.log("EmailJS Error:", error);
+        alert("Something went wrong while sending email.");
     });
-  }
-
-
-  if (servicesPanel) {
-    servicesPanel.addEventListener('click', function (ev) {
-      var t = ev.target;
-      var btn = t.closest ? t.closest('button') : (t.tagName === 'BUTTON' ? t : null);
-      if (!btn) return;
-
-      var row = btn.closest('.service-row');
-      if (!row) return;
-
-      var name = row.getAttribute('data-name');
-      var price = parseFloat(row.getAttribute('data-price')) || 0;
-
-      if (!isItemInCart(name)) {
-        addItemToCart(name, price, btn);
-      } else {
-        removeItemFromCart(name, btn);
-      }
-
-    });
-  }
-
-  if (bookingForm) {
-    bookingForm.addEventListener('submit', handleBookingSubmit);
-  }
-
-  var newsForm = document.querySelector('.newsletter-form');
-  if (newsForm) {
-    newsForm.addEventListener('submit', function (ev) {
-      ev.preventDefault();
-      alert('Thank you for subscribing to our newsletter!');
-      newsForm.reset();
-    });
-  }
-
-  refreshCartView();
-
 });
+
