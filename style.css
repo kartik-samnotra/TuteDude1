@@ -175,6 +175,7 @@ h1 {
     justify-content: space-between;
     padding: 4rem 2rem;
     gap: 2rem;
+    height: max-content;
 }
 
 .left-services {
@@ -182,28 +183,30 @@ h1 {
     border-radius: 16px;
     background: white;
     flex: 3;
+    
 }
 
 .left-services h3 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
     color: rgb(32, 49, 59);
     font-weight: 600;
 }
 
 .left-services p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: rgb(32, 49, 59);
     line-height: 1.6;
     margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .horizontal-divider {
     width: 100%;
     height: 1px;
     background: grey;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 .service-option-item {
@@ -275,6 +278,7 @@ h1 {
     background: white;
     margin-bottom: 1rem;
     border: 1px solid #e5e7eb;
+    height: 500px;
 }
 
 .lower {
@@ -429,6 +433,7 @@ h1 {
     cursor: pointer;
     font-size: 1.1rem;
     margin-top: 1rem;
+    width: 47.5%;
 }
 .news-entry button:hover {
     background: #e5e7eb;
@@ -447,301 +452,34 @@ footer {
 footer h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    margin-top: 2rem;
 }
 
-/* Add these media queries at the end of your style.css file */
+.site-logo{
+    font-size: 2rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #4b5563;
 
-/* Tablet Styles (768px - 1024px) */
-@media (max-width: 1024px) {
-    .navbar {
-        padding: 1.5rem 2rem;
-    }
-    
-    .hero {
-        padding: 3rem 2rem;
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .right-hero {
-        text-align: center;
-        margin-top: 2rem;
-    }
-    
-    .right-hero img {
-        max-width: 80%;
-        height: auto;
-    }
-    
-    .achieve-main {
-        flex-direction: column;
-        text-align: center;
-        gap: 2rem;
-    }
-    
-    .right-achieve {
-        gap: 2rem;
-    }
-    
-    .service {
-        flex-direction: column;
-        gap: 2rem;
-    }
-    
-    .quality {
-        flex-wrap: wrap;
-        gap: 2rem;
-    }
-    
-    .point {
-        flex: 0 0 calc(50% - 1rem);
-    }
-    
-    .newsletter {
-        flex-direction: column;
-        text-align: center;
-        gap: 2rem;
-    }
-    
-    .news-entry {
-        width: 100%;
-    }
-    
-    .news-entry input {
-        width: 100%;
-        margin-bottom: 1rem;
-        margin-right: 0;
-    }
-    
-    .footer {
-        flex-wrap: wrap;
-        gap: 3rem;
-    }
-    
-    .footer-column {
-        flex: 0 0 calc(50% - 1.5rem);
-    }
 }
 
-/* Mobile Styles (up to 768px) */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.2rem;
-    }
-    
-    .navbar {
-        padding: 1rem;
-        flex-wrap: wrap;
-    }
-    
-    .nav-link {
-        display: none; /* You might want to replace this with a hamburger menu */
-        width: 100%;
-        order: 3;
-        margin-top: 1rem;
-        gap: 1rem;
-        justify-content: center;
-    }
-    
-    .nav-user {
-        margin-left: auto;
-    }
-    
-    .hero {
-        padding: 2rem 1rem;
-    }
-    
-    .hero-btn {
-        padding: 1rem 2rem;
-        font-size: 1rem;
-    }
-    
-    .achieve-main {
-        padding: 2rem 1rem;
-    }
-    
-    .right-achieve {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    .divider {
-        width: 50px;
-        height: 1px;
-    }
-    
-    .service {
-        padding: 2rem 1rem;
-    }
-    
-    .left-services, .right-services {
-        width: 100%;
-    }
-    
-    .service-option-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-    
-    .add-to-cart-btn {
-        align-self: flex-end;
-    }
-    
-    .quality {
-        flex-direction: column;
-        gap: 3rem;
-        padding: 3rem 1rem;
-    }
-    
-    .point {
-        flex: 0 0 100%;
-    }
-    
-    .news {
-        padding: 2rem 1rem;
-    }
-    
-    .newsletter {
-        padding: 0;
-    }
-    
-    .news-text h2 {
-        font-size: 2rem;
-    }
-    
-    .footer {
-        flex-direction: column;
-        gap: 3rem;
-        padding: 3rem 1rem;
-    }
-    
-    .footer-column {
-        flex: 0 0 100%;
-    }
-    
-    .cart-table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-    
-    .news-entry div:first-child {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
+footer h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #4b5563;
 }
 
-/* Small Mobile Styles (up to 480px) */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.8rem;
-    }
-    
-    .left-achieve h2, 
-    .left-services h3,
-    .news-text h2 {
-        font-size: 1.8rem;
-    }
-    
-    .right-achieve h3 {
-        font-size: 1.5rem;
-    }
-    
-    .service-option-item {
-        padding: 1rem 0.5rem;
-    }
-    
-    .add-to-cart-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.85rem;
-    }
-    
-    .upper, .lower {
-        padding: 1.5rem;
-    }
-    
-    .book-now-btn {
-        padding: 0.8rem 0;
-        font-size: 1rem;
-    }
-    
-    .news-entry input,
-    .news-entry button {
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
-    }
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-/* Desktop Adjustments for very large screens */
-@media (min-width: 1600px) {
-    .main-wrapper {
-        max-width: 1500px;
-    }
+.footer-column a {
+    text-decoration: none;
+    color: #4b5563;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
 }
-
-/* Prevent horizontal scrolling on mobile */
-@media (max-width: 768px) {
-    body {
-        overflow-x: hidden;
-    }
-    
-    .main-wrapper {
-        padding: 0 1rem;
-    }
-}
-
-/* Fix for navigation on mobile - Add hamburger menu if needed */
-/* Uncomment this if you want to add a hamburger menu */
-
-@media (max-width: 768px) {
-    .navbar {
-        position: relative;
-    }
-    
-    .nav-link {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: white;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        padding: 1rem;
-        z-index: 1000;
-    }
-    
-    .nav-link.active {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .hamburger {
-        display: block;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-}
-
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-@media (max-width: 768px) {
-    .cart-table {
-        font-size: 0.9rem;
-    }
-    
-    .cart-table th, 
-    .cart-table td {
-        padding: 0.5rem;
-    }
-}
-
 

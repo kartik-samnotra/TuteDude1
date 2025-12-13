@@ -87,6 +87,20 @@ addButtons.forEach(function (button) {
     });
 });
 
+function clearCart() {
+
+    cartList.innerHTML = "";
+    currentTotal = 0;
+    updateTotalDisplay();
+    showEmptyMessage();
+
+    addButtons.forEach(function (btn) {
+        btn.classList.remove("remove-btn-style");
+        btn.classList.add("add-btn-style");
+        btn.innerText = "Add Item ⊕";
+    });
+}
+
 
 bookingForm.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -134,6 +148,7 @@ bookingForm.addEventListener("submit", function (e) {
         successMessage.style.display = "block";
 
         bookingForm.reset();
+        clearCart();
     })
     .catch(function (error) {
         console.log("EmailJS Error:", error);
